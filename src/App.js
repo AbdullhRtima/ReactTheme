@@ -1,27 +1,24 @@
 import React  ,{ useState }from 'react';
 import { ThemeProvider } from 'styled-components';
 import { lightTheme, darkTheme } from './style/theme';
+import { useDarkMode } from './components/useDarkMode';
 import { GlobalStyles } from './style/global';
-import Toggle from './components/Toggle'
+import Toggle from './components/Toggle';
+
 
  
 const  App =()=> {
-    const [theme, setTheme] = useState('light');
+    const [theme, toggleTheme ,componentMounted] = useDarkMode();
+    const themeMode= theme === 'light'? lightTheme : darkTheme 
 
-    // The function that toggles between themes
-        const toggleTheme = () => {
-            // if the theme is not light, then set it to dark
-            if (theme === 'light') {
-            setTheme('dark');
-            // otherwise, it should be light
-            } else {
-            setTheme('light');
-            }
-        }
+        if (!componentMounted) {
+            return <div />
+          };
+
     return (
-        <ThemeProvider theme={ theme === 'light'? lightTheme : darkTheme }> 
+        <ThemeProvider  theme={themeMode}  > 
             <>
-                <GlobalStyles />
+                <GlobalStyles/>
                 <Toggle theme={theme} toggleTheme={toggleTheme} />
                  <h1>It's a {theme === 'light' ? 'light theme' : 'dark theme'}!</h1>
                  <footer>
