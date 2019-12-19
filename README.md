@@ -1,3 +1,3 @@
 # ReactTheme
 
-![](darklight.gif)
+![](update.gif)
