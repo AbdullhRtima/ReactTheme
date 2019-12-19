@@ -1,21 +1,22 @@
 import React from 'react'
 import { func, string } from 'prop-types';
 import styled from 'styled-components';
-// Import a couple of SVG files we'll use in the design: https://www.flaticon.com
 import { ReactComponent as MoonIcon } from '../icons/moon.svg';
 import { ReactComponent as SunIcon } from '../icons/sun.svg';
+
+import './content/style.scss'
 
 // Toggle.styled.js
 
 const ToggleContainer = styled.button`
   background: ${({ theme }) => theme.gradient};
   border: 2px solid ${({ theme }) => theme.toggleBorder};
-  border-radius: 500px;
+  border-radius: 50px;
   cursor: pointer;
   display: flex;
-  font-size: 0.5rem;
-  justify-content: space-between;
-  margin: 0 auto;
+  font-size: 0.8rem;
+  justify-content: space-between ;
+  // margin: 0 auto;
   overflow: hidden;
   padding: 0.5rem;
   position: relative;
@@ -42,10 +43,13 @@ const ToggleContainer = styled.button`
 const Toggle = ({ theme, toggleTheme }) => {
   const isLight = theme === 'light';
   return (
+    <div className="nav" >
+    <h1>DEV:Abdullh Rtima</h1>
     <ToggleContainer lightTheme={isLight} onClick={toggleTheme} >
             <SunIcon />
             <MoonIcon/>
     </ToggleContainer>
+    </div>
   );
 };
 
